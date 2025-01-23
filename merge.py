@@ -6,22 +6,26 @@ import pandas as pd
 input_directory = "C:\\Users\\James.Seelig\\Downloads\\archive\\stocks"  # The location of the source data
 output_file = "master_stock_data.csv"  # The resulting output
 
-# Creating an empty data frame to hold the new file 
+# Create an empty data frame to hold the new file 
 merged_data = pd.DataFrame()
 
-# Get a list of all CSV files in the directory
+# Get a count of all CSV files in the directory
 csv_files = [file for file in os.listdir(input_directory) if file.endswith(".csv")]
 total_files = len(csv_files)
 
+# Visual confirmation of file count
 print(f"Found {total_files} CSV files to process...")
 
 # Loop through all files in the directory with progress tracking
 for index, file_name in enumerate(csv_files, start=1):
     file_path = os.path.join(input_directory, file_name)
+    
     # Read the CSV file into a DataFrame
     data = pd.read_csv(file_path)
-    # Add a column to identify the stock from the filename (optional)
+    
+    # Add a column to identify the stock from the filename
     data['Stock'] = os.path.splitext(file_name)[0]
+    
     # Append the data to the merged DataFrame
     merged_data = pd.concat([merged_data, data], ignore_index=True)
     
