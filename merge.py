@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 
-# The stock data exists as individual tickers. I'd rather interact with it all as one dataset, so I will first be merge all of them together.
+# The stock data exists as individual tickers. I'd rather interact with it all as one dataset, so I will first merge them.
 
 input_directory = "C:\\Users\\James.Seelig\\Downloads\\archive\\stocks"  # The location of the source data
 output_file = "master_stock_data.csv"  # The resulting output
